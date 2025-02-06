@@ -1,7 +1,7 @@
 from flask import Flask
 
 #Create all routes
-from .routes import twitter_auth
+from .routes.twitter import twitter_auth
 
 app = Flask(__name__)
 
