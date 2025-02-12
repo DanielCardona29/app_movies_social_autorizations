@@ -9,8 +9,12 @@ responseController = responseDto()
 
 
 class twitterTokenInvalidate:
-    TWITTER_API_KEY: str = config("API_KEY")
-    TWITTER_API_KEY_SECRET: str = config("API_KEY_SECRET")
+    '''
+        Validate the token and secret of the user to invalidate the token
+        Returns a response from the twitter API
+    '''
+    TWITTER_API_KEY: str = config("TWITTER_API_KEY")
+    TWITTER_API_KEY_SECRET: str = config("TWITTER_API_KEY_SECRET")
 
     def __init__(self, authorize_token: str, authorize_token_secret: str) -> None:
         self.authorize_token = authorize_token

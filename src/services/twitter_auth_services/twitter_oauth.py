@@ -9,8 +9,8 @@ responseController = responseDto()
 
 
 class twitterOauthValidate:
-    TWITTER_API_KEY: str = config("API_KEY")
-    TWITTER_API_KEY_SECRET: str = config("API_KEY_SECRET")
+    TWITTER_API_KEY: str = config("TWITTER_API_KEY")
+    TWITTER_API_KEY_SECRET: str = config("TWITTER_API_KEY_SECRET")
 
     def makeARequest(self):
         oauth = OAuth1(self.TWITTER_API_KEY, self.TWITTER_API_KEY_SECRET)

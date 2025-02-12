@@ -1,6 +1,5 @@
 import requests
 from decouple import config
-from requests_oauthlib import OAuth1
 from ...utils.constants import TWITTER_TOKEN_ACCESS_URL
 
 from ...utils.services_response_dto.response_dto import responseDto
@@ -9,8 +8,8 @@ responseController = responseDto()
 
 
 class twitterTokenValidate:
-    TWITTER_API_KEY = config("API_KEY")
-    TWITTER_API_KEY_SECRET = config("API_KEY_SECRET")
+    TWITTER_API_KEY = config("TWITTER_API_KEY")
+    TWITTER_API_KEY_SECRET = config("TWITTER_API_KEY_SECRET")
 
     def __init__(self, oauth_token, oauth_verifier) -> None:
         self.oauth_token = oauth_token
