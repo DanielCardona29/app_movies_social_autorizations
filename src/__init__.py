@@ -11,5 +11,4 @@ def init_app(config):
   
   #blue prints
   app.register_blueprint(twitter_auth.routes, url_prefix='/twitter')
-  
   return app

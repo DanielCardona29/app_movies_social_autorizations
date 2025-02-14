@@ -1,4 +1,3 @@
-from asyncio import constants
 from flask import Blueprint, request
 
 from src.services.twitter_auth_services.twitter_invalidate_token import (
