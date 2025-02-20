@@ -1,0 +1,10 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255),
+    twitter_id VARCHAR(255) UNIQUE,
+    google_id VARCHAR(255) UNIQUE,
+    facebook_id VARCHAR(255) UNIQUE,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

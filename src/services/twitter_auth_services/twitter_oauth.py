@@ -2,7 +2,7 @@ import requests
 from decouple import config
 from requests_oauthlib import OAuth1
 
-from ...utils.constants import TWITTER_URL_AUTHENTICATE, TWITTER_TOKEN_REQUEST_URL
+from ...utils.constants import TWITTER_TOKEN_REQUEST_URL, TWITTER_URL_AUTHENTICATE
 from ...utils.services_response_dto.response_dto import responseDto
 
 responseController = responseDto()
@@ -14,7 +14,7 @@ class twitterOauthValidate:
 
     def makeARequest(self):
         oauth = OAuth1(self.TWITTER_API_KEY, self.TWITTER_API_KEY_SECRET)
-        return requests.post(TWITTER_TOKEN_REQUEST_URL, auth=oauth)
+        return requests.post(TWITTER_TOKEN_REQUEST_URL, auth=oauth, timeout=5)
 
     def handleServiceResponse(self):
         # request the auth token service

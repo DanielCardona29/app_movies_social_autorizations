@@ -1,0 +1,12 @@
+# Configuración general
+line-length = 120  # 📏 Límite de caracteres por línea (ejemplo: 88)
+target-version = "py311"  # 🎯 Versión de Python objetivo (ejemplo: Python 3.11)
+
+[lint]  # ✅ Ahora todo va dentro de [lint]
+select = ["E", "F", "W", "I"]  # 🛠️ Habilitar reglas de estilo y errores
+extend-select = ["C90"]  # 🔥 Agrega más reglas específicas
+ignore = ["E501", "F401"]  # 🚫 Ignorar reglas específicas
+
+[format]  # 🖊️ Configuración del formateador
+quote-style = "double"  # "" en lugar de ''
+indent-style = "space"  # Usa espacios en lugar de tabs

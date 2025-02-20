@@ -28,7 +28,7 @@ class twitterTokenInvalidate:
             self.authorize_token,
             self.authorize_token_secret,
         )
-        response = requests.post(TWITTER_TOKEN_INVALIDATE_TOKEN_URL, auth=oauth)
+        response = requests.post(TWITTER_TOKEN_INVALIDATE_TOKEN_URL, auth=oauth, timeout=5)
         return response
 
     def handleServiceResponse(self):

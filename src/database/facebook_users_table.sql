@@ -1,0 +1,5 @@
+CREATE TABLE facebook_auth_users (
+    id SERIAL PRIMARY KEY,
+    facebook_id VARCHAR(255) NOT NULL UNIQUE,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
