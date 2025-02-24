@@ -1,5 +1,3 @@
-import asyncio
-
 import requests
 from decouple import config
 from requests_oauthlib import OAuth1
@@ -57,6 +55,17 @@ class twitterTokenValidate:
             },
         }
 
+    def writeUser(self, user_data: dict, credentials: dict):
+        try:
+            db_services.writeUser(
+                name=user_data.get("name", "Desconocido"),
+                email=user_data.get("email", ""),
+                twitter_id=credentials["user_id"],
+            )
+        except Exception as e:
+            print(f"Error on write user {e}")
+            raise e
+
     def buildReponse(self, response):
         """Build the response to be returned to the user"""
         credentials = dict(x.split("=") for x in response.text.split("&"))
@@ -64,14 +73,10 @@ class twitterTokenValidate:
             credentials["oauth_token"],
             credentials["oauth_token_secret"],
         )
-        # write the user on the database
-        asyncio.run(
-            db_services.writeUser(
-                name=user_data["name"],
-                email=user_data["email"],
-                twitter_id=credentials["user_id"],
-            )
-        )
+        # Validate if user exists on the table users
+        if not db_services.validateIfAnUserExist(user_data["email"]):
+            self.writeUser(user_data, credentials)
+
         data = self.buildDataResponse(credentials, user_data)
         return data
 
@@ -89,5 +94,5 @@ class twitterTokenValidate:
                     response.status_code,
                     error=response.text,
                 )
-        except ValueError:
-            return responseController.unknownError()
+        except ValueError as e:
+            return responseController.unknownError(e)

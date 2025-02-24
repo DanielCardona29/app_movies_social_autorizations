@@ -16,8 +16,8 @@ class responseDto:
     def errorOnService(self, code: int, error: dict) -> dict:
         return jsonify({"message": MESSAGE["error"], "code": code, "data": error}), code
 
-    def unknownError(self) -> dict:
-        return jsonify({"message": MESSAGE["unknown"], "code": 500}), 500
+    def unknownError(self, e: any = "") -> dict:
+        return jsonify({"message": MESSAGE["unknown"], "code": 500, "error": e}), 500
 
     def valueError(self) -> dict:
         return jsonify({"message": MESSAGE["value"], "code": 500}), 500
